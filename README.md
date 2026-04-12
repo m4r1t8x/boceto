@@ -29,10 +29,14 @@ Parámetros físicos del e-puck utilizados en el laboratorio:
 * **Velocidad lineal resultante:**  v = r × base_speed = 0.0205 × 3.14 ≈ 0.0644 m/s
 
 #### 2.2 Ecuaciones cinemáticas
-A partir de las velocidades angulares de las ruedas (vr = rueda derecha, vl = rueda izquierda) se obtienen la velocidad lineal v y la velocidad angular ω del robot:
-`v  = r·(vr + vl) / 2          →  velocidad lineal del centro (m/s o rad/s)`
-`ω  = r· (vr - vl) / L          →  velocidad angular de giro (rad/s)`
-`R  = L·(vr+vl) / (2·(vr-vl))  →  radio de curvatura (m), ∞ si vr=vl`
+A partir de las velocidades angulares de las ruedas (vr = rueda derecha, vl = rueda izquierda) se obtienen la velocidad lineal v y la velocidad angular ω del robot:  
+
+`v  = r·(vr + vl) / 2          →  velocidad lineal del centro (m/s o rad/s)`  
+
+`ω  = r· (vr - vl) / L          →  velocidad angular de giro (rad/s)`  
+
+`R  = L·(vr+vl) / (2·(vr-vl))  →  radio de curvatura (m), ∞ si vr=vl`  
+
 
 La evolución temporal del estado sigue las ecuaciones diferenciales de movimiento:
 **ẋ = v · cos(θ)**
