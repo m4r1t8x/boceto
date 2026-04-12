@@ -185,6 +185,10 @@ Desafío	Velocidades	v (m/s)	ω (rad/s)	Radio R (m)	Trayectoria observada
 3 — Círculo	vl=2.0, vr=5.0	0.072	1.18	0.061	Círculo cerrado y repetitivo
 4 — Cuadrado	Temporización (2 fases)	Variable 0.064	2.48	∞ / 0	Cuadrado de 0.25 m de lado
 
+| Encabezado 1 | Encabezado 2 | Encabezado 3 |
+| ------------ | ------------ | ------------ |
+| Fila 1, Col 1 | Fila 1, Col 2 | Fila 1, Col 3 |
+| Fila 2, Col 1 | Fila 2, Col 2 | Fila 2, Col 3 |
 
 ### 6. Interpretación y Análisis
 #### 6.1 La diferencia de velocidades controla la curvatura
