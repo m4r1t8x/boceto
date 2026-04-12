@@ -85,6 +85,7 @@ angle_of_rotation = (2 * math.pi) / num_side  # π/2 rad
 rate_of_rotation  = (2 * linear_velocity) / distance_between_wheels
 duration_turn  = (angle_of_rotation / rate_of_rotation) * 1.04  # ≈ 0.66 s```
 
+
 ### 4. Experimentos y Resultados
 Se ejecutaron los cuatro desafíos del controlador. A continuación se presenta el código específico de cada uno, los cálculos cinemáticos derivados y los resultados observados en la simulación.
 
