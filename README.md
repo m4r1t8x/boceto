@@ -60,8 +60,7 @@ De las ecuaciones anteriores se derivan tres casos canónicos que son la base de
 El siguiente código Python fue el efectivamente utilizado durante el laboratorio. Implementa los cuatro desafíos en un único controlador seleccionable mediante la variable DESAFIO. Se presentan los fragmentos relevantes para cada experimento analizado.
 #### 3.1 Estructura general del controlador
 
-  
-`from controller import Robot
+  <from controller import Robot
 import math
 robot = Robot()
 timestep = int(robot.getBasicTimeStep())
@@ -84,7 +83,7 @@ linear_velocity = wheel_radius * base_speed  # ≈ 0.0644 m/s
 duration_side  = length_side / linear_velocity  # ≈ 3.88 s
 angle_of_rotation = (2 * math.pi) / num_side  # π/2 rad
 rate_of_rotation  = (2 * linear_velocity) / distance_between_wheels
-duration_turn  = (angle_of_rotation / rate_of_rotation) * 1.04  # ≈ 0.66 s`
+duration_turn  = (angle_of_rotation / rate_of_rotation) * 1.04  # ≈ 0.66 s>
 
 ### 4. Experimentos y Resultados
 Se ejecutaron los cuatro desafíos del controlador. A continuación se presenta el código específico de cada uno, los cálculos cinemáticos derivados y los resultados observados en la simulación.
