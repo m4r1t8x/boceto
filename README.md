@@ -23,21 +23,21 @@ El presente informe analiza los cuatro desafíos ejecutados en Webots, incluyend
 #### 2.1 Variables de estado y parámetros
 El estado completo del robot se describe mediante el vector de pose (x, y, θ), donde x e y son las coordenadas del punto central del eje de ruedas en el plano, y θ es la orientación del robot respecto al eje horizontal. Las entradas de control son las velocidades angulares de cada motor.
 Parámetros físicos del e-puck utilizados en el laboratorio:
-•	Radio de rueda:  r = 0.0205 m
-•	Distancia entre ruedas:  L = 0.052 m
-•	Velocidad base de referencia:  base_speed = 3.14 rad/s
-•	Velocidad lineal resultante:  v = r × base_speed = 0.0205 × 3.14 ≈ 0.0644 m/s
+* **Radio de rueda:**  r = 0.0205 m
+* **Distancia entre ruedas:**  L = 0.052 m
+* **Velocidad base de referencia:**  base_speed = 3.14 rad/s
+* **Velocidad lineal resultante:**  v = r × base_speed = 0.0205 × 3.14 ≈ 0.0644 m/s
 
 #### 2.2 Ecuaciones cinemáticas
 A partir de las velocidades angulares de las ruedas (vr = rueda derecha, vl = rueda izquierda) se obtienen la velocidad lineal v y la velocidad angular ω del robot:
-v  = r·(vr + vl) / 2          →  velocidad lineal del centro (m/s o rad/s)
-ω  = r· (vr - vl) / L          →  velocidad angular de giro (rad/s)
-R  = L·(vr+vl) / (2·(vr-vl))  →  radio de curvatura (m), ∞ si vr=vl
+**v  = r·(vr + vl) / 2          →  velocidad lineal del centro (m/s o rad/s)**
+**ω  = r· (vr - vl) / L          →  velocidad angular de giro (rad/s)**
+**R  = L·(vr+vl) / (2·(vr-vl))  →  radio de curvatura (m), ∞ si vr=vl**
 
 La evolución temporal del estado sigue las ecuaciones diferenciales de movimiento:
-ẋ = v · cos(θ)
-ẏ = v · sin(θ)
-θ̇ = ω
+**ẋ = v · cos(θ)**
+**ẏ = v · sin(θ)**
+**θ̇ = ω**
 
 #### 2.3 Los tres comportamientos fundamentales
 De las ecuaciones anteriores se derivan tres casos canónicos que son la base de todos los desafíos:
@@ -53,7 +53,7 @@ De las ecuaciones anteriores se derivan tres casos canónicos que son la base de
 El siguiente código Python fue el efectivamente utilizado durante el laboratorio. Implementa los cuatro desafíos en un único controlador seleccionable mediante la variable DESAFIO. Se presentan los fragmentos relevantes para cada experimento analizado.
 #### 3.1 Estructura general del controlador
 
-from controller import Robot
+**from controller import Robot
 import math
 robot = Robot()
 timestep = int(robot.getBasicTimeStep())
