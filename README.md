@@ -179,32 +179,12 @@ El factor 1.04 compensa la inercia del robot y evita acumulación de error angul
 ### 5. Tabla Resumen de Experimentos
 La siguiente tabla sintetiza los resultados cuantitativos de los cuatro desafíos ejecutados, con los valores calculados a partir de los parámetros reales del robot e-puck.
 
+Desafío	Velocidades	v (m/s)	ω (rad/s)	Radio R (m)	Trayectoria observada
+1 — Recto	vl=vr=3.14	0.064	0.00	∞	Línea recta continua
+2 — Curva	vl=2.83, vr=3.14	0.061	0.124	0.49	Arco amplio hacia la izquierda
+3 — Círculo	vl=2.0, vr=5.0	0.072	1.18	0.061	Círculo cerrado y repetitivo
+4 — Cuadrado	Temporización (2 fases)	Variable 0.064	2.48	∞ / 0	Cuadrado de 0.25 m de lado
 
-
-
-#### 5.1 ¿Qué ocurre cuando ambas ruedas tienen la misma velocidad?
-[cite_start]Cuando $v_r = v_l$, la diferencia de velocidades es nula, lo que implica que la velocidad angular $\omega$ es cero[cite: 5].
-* [cite_start]**Análisis:** Al no haber rotación, el radio de curvatura $R$ tiende a infinito[cite: 5].
-* [cite_start]**Resultado:** El robot mantiene una trayectoria rectilínea perfecta con una orientación $\theta$ constante[cite: 5].
-* [cite_start]**Evidencia:** Confirmado en el **Desafío 1**, donde el robot avanzó sin desviaciones laterales[cite: 5].
-
-#### 5.2 ¿Cómo cambia la trayectoria cuando las velocidades son diferentes?
-[cite_start]Al existir una diferencia entre $v_r$ y $v_l$, el robot describe un arco circular cuyo radio depende de dicha disparidad[cite: 5].
-* [cite_start]**Análisis:** La curvatura es directamente proporcional a la diferencia de velocidades[cite: 5]. [cite_start]La rueda con menor velocidad determina el interior del giro[cite: 5].
-* **Resultados Experimentales:**
-    * [cite_start]**Desafío 2 (Diferencia del 10%):** Se observó un giro continuo con un radio amplio calculado de $R \approx 0.49$ m[cite: 5].
-    * [cite_start]**Desafío 3 ($v_l=2.0, v_r=5.0$):** Se generó un círculo mucho más cerrado con un radio de $R \approx 0.06$ m[cite: 5].
-
-#### 5.3 ¿Qué ocurre cuando una rueda gira en sentido opuesto a la otra?
-[cite_start]Si se aplican velocidades de igual magnitud pero signos opuestos ($v_r = -v_l$), la velocidad lineal resultante $v$ es cero[cite: 5].
-* [cite_start]**Análisis:** El robot realiza una **rotación pura** sobre su propio eje central[cite: 5].
-* [cite_start]**Aplicación:** Esta maniobra permite cambiar la orientación $\theta$ sin alterar la posición $(x, y)$[cite: 5].
-* [cite_start]**Evidencia:** Esta lógica fue fundamental para el **Desafío 4**, permitiendo que el robot girara exactamente 90° en las esquinas del cuadrado[cite: 5].
-
-#### 5.4 ¿Qué tipo de movimiento permite dibujar un círculo?
-[cite_start]Para trazar un círculo perfecto y constante, se requiere que la relación de velocidades sea fija y del mismo signo ($v_r/v_l = \text{constante} \neq 1$)[cite: 5].
-* [cite_start]**Condición:** Las velocidades deben permanecer constantes en el tiempo para que el radio $R$ y la velocidad angular $\omega$ no varíen[cite: 5].
-* **Tiempo de Ciclo:** El tiempo para completar una revolución depende de $\omega$. [cite_start]En el **Desafío 3**, se completó el círculo en aproximadamente 5.32 segundos[cite: 5].
 
 ### 6. Interpretación y Análisis
 #### 6.1 La diferencia de velocidades controla la curvatura
