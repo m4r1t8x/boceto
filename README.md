@@ -1,1 +1,5 @@
-# boceto
+## Experimentos
+
+## Análisis de preguntas
+
+## Conclusión
