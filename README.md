@@ -42,12 +42,12 @@ La evolución temporal del estado sigue las ecuaciones diferenciales de movimien
 #### 2.3 Los tres comportamientos fundamentales
 De las ecuaciones anteriores se derivan tres casos canónicos que son la base de todos los desafíos:
 
-
-Condición	v lineal	ω angular	Radio R	Comportamiento
-vr = vl	v = vr = vl	ω = 0	R → ∞	Línea recta
-vr ≠ vl (mismo signo)	(vr+vl)/2	r·(vr - vl)/L ≠ 0	Finito positivo	Arco o círculo
-vr = −vl	v = 0	2·r·vr / L	R = 0	Rotación in situ
-vr/vl = cte ≠ 1	Constante ≠ 0	Constante ≠ 0	Constante	Círculo perfecto
+| Condición | v lineal | ω angular | Radio R | Comportamiento |
+| ------------ | ------------ | ------------ | ------------ | ------------ |
+| vr = vl | v = vr = vl | ω = 0 | R → ∞ | Línea recta |
+| vr ≠ vl (mismo signo) | (vr+vl)/2 | r·(vr - vl)/L ≠ 0 | Finito positivo | Arco o círculo |
+|vr = −vl |v = 0 | 2·r·vr / L | R = 0 | Rotación in situ |
+| vr/vl = cte ≠ 1 | Constante ≠ 0 | Constante ≠ 0 | Constante | Círculo perfecto |
 
 ### 3. Código del Controlador en Webots
 El siguiente código Python fue el efectivamente utilizado durante el laboratorio. Implementa los cuatro desafíos en un único controlador seleccionable mediante la variable DESAFIO. Se presentan los fragmentos relevantes para cada experimento analizado.
