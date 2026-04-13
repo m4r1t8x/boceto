@@ -1,50 +1,8 @@
 ## 5) Análisis de Preguntas
 
-### 1. Introducción y Objetivo
-Un robot móvil diferencial es un sistema robótico NO holónomo cuyo movimiento en el plano está completamente determinado por las velocidades angulares de sus dos ruedas motrices independientes. A diferencia de los vehículos con dirección, este tipo de robot no puede desplazarse lateralmente: solo puede moverse en la dirección en que apunta, y gira variando la velocidad relativa entre ruedas.
-El presente informe analiza los cuatro desafíos ejecutados en Webots, incluyendo el código de control utilizado, los cálculos cinemáticos derivados de los parámetros reales del e-puck, y las respuestas a las cuatro preguntas de análisis planteadas en la guía de laboratorio.
-
-### 2. Modelo Cinemático del Robot Diferencial
-##### 2.1 Variables de estado y parámetros
-El estado completo del robot se describe mediante el vector de pose (x, y, θ), donde x e y son las coordenadas del punto central del eje de ruedas en el plano, y θ es la orientación del robot respecto al eje horizontal. Las entradas de control son las velocidades angulares de cada motor.
-
-Parámetros físicos del e-puck utilizados en el laboratorio:
-
-* **Radio de rueda:**  r = 0.0205 m
-* **Distancia entre ruedas:**  L = 0.052 m
-* **Velocidad base de referencia:**  base_speed = 3.14 rad/s
-* **Velocidad lineal resultante:**  v = r × base_speed = 0.0205 × 3.14 ≈ 0.0644 m/s
-
-##### 2.2 Ecuaciones cinemáticas
-A partir de las velocidades angulares de las ruedas (vr = rueda derecha, vl = rueda izquierda) se obtienen la velocidad lineal v y la velocidad angular ω del robot:  
-
-```
-v  = r·(vr + vl) / 2          →  velocidad lineal del centro (m/s o rad/s) 
-ω  = r· (vr - vl) / L          →  velocidad angular de giro (rad/s) 
-R  = L·(vr+vl) / (2·(vr-vl))  →  radio de curvatura (m), ∞ si vr=vl  
-```
-
-La evolución temporal del estado sigue las ecuaciones diferenciales de movimiento:
-
-```
-ẋ = v · cos(θ)
-ẏ = v · sin(θ)
-θ̇ = ω
-```
-
-##### 2.3 Los tres comportamientos fundamentales
-De las ecuaciones anteriores se derivan tres casos canónicos que son la base de todos los desafíos:
-
-| Condición | v lineal | ω angular | Radio R | Comportamiento |
-| ------------ | ------------ | ------------ | ------------ | ------------ |
-| vr = vl | v = vr = vl | ω = 0 | R → ∞ | Línea recta |
-| vr ≠ vl (mismo signo) | (vr+vl)/2 | r·(vr - vl)/L ≠ 0 | Finito positivo | Arco o círculo |
-|vr = −vl |v = 0 | 2·r·vr / L | R = 0 | Rotación in situ |
-| vr/vl = cte ≠ 1 | Constante ≠ 0 | Constante ≠ 0 | Constante | Círculo perfecto |
-
-### 3. Código del Controlador en Webots
+### 1. Código del Controlador en Webots
 El siguiente código Python fue el efectivamente utilizado durante el laboratorio. Implementa los cuatro desafíos en un único controlador seleccionable mediante la variable DESAFIO. Se presentan los fragmentos relevantes para cada experimento analizado.
-##### 3.1 Estructura general del controlador
+##### 1.1 Estructura general del controlador
 
 ```
 from controller import Robot
@@ -74,10 +32,10 @@ duration_turn  = (angle_of_rotation / rate_of_rotation) * 1.04  # ≈ 0.66 s
 ```
 
 
-### 4. Experimentos y Resultados
+### 2. Experimentos y Resultados
 Se ejecutaron los cuatro desafíos del controlador. A continuación se presenta el código específico de cada uno, los cálculos cinemáticos derivados y los resultados observados en la simulación.
 
-##### 4.1 DESAFIO 1 — Movimiento recto (vr = vl)
+##### 2.1 DESAFIO 1 — Movimiento recto (vr = vl)
 Código ejecutado:
 
 ```
@@ -102,7 +60,7 @@ Este experimento valida la condición fundamental del modelo diferencial: cuando
 >Conclusión DESAFIO 1: vr = vl  →  ω = 0  →  θ = constante  →  trayectoria rectilínea.
 >La rapidez de avance depende de la magnitud de la velocidad; la dirección no cambia.
 
-##### 4.2 DESAFIO 2 — Trayectoria curva (vr ≠ vl)
+##### 2.2 DESAFIO 2 — Trayectoria curva (vr ≠ vl)
 Código ejecutado:
 ```
 elif DESAFIO == 2:  # curva
@@ -125,7 +83,7 @@ La rueda derecha (más rápida) quedó en el exterior del arco y la izquierda (m
 >Regla: mayor diferencia |vr − vl| → menor radio R → giro más cerrado.
 >La rueda más lenta siempre queda en el interior del arco.
 
-##### 4.3 DESAFIO 3 — Círculo (vl = 2.0, vr = 5.0)
+##### 2.3 DESAFIO 3 — Círculo (vl = 2.0, vr = 5.0)
 Código ejecutado:
 ```
 elif DESAFIO == 3:  # circulo
@@ -146,7 +104,7 @@ Este experimento ilustra que un círculo perfecto se obtiene cuando la relación
 >Para un círculo se requiere: vr ≠ vl, ambas del mismo signo, y ambas constantes en el tiempo.
 >Cuanto mayor la diferencia vr − vl, más pequeño el círculo.
 
-##### 4.4 DESAFIO 4 — Cuadrado (control por temporización)
+##### 2.4 DESAFIO 4 — Cuadrado (control por temporización)
 Código ejecutado:
 ```
 elif DESAFIO == 4:  # cuadrado
@@ -187,7 +145,7 @@ Este experimento demuestra que trayectorias complejas pueden programarse sin sen
 >Duración lado: 3.88 s · Duración giro: 0.66 s · Ciclo total: 4.54 s
 >El factor 1.04 compensa la inercia del robot y evita acumulación de error angular.
 
-### 5. Tabla Resumen de Experimentos
+### 3. Tabla Resumen de Experimentos
 La siguiente tabla sintetiza los resultados cuantitativos de los cuatro desafíos ejecutados, con los valores calculados a partir de los parámetros reales del robot e-puck.
 
 | Desafío | Velocidades | v (m/s) | ω (rad/s) | Radio R (m) | Trayectoria observada |
@@ -197,8 +155,8 @@ La siguiente tabla sintetiza los resultados cuantitativos de los cuatro desafío
 | 3 — Círculo | vl=2.0, vr=5.0 | 0.072 | 1.18 | 0.061 | Círculo cerrado y repetitivo |
 | 4 — Cuadrado | Temporización (2 fases) | Variable 0.064 | 2.48 | ∞ / 0 | Cuadrado de 0.25 m de lado |
 
-### 6. Interpretación y Análisis
-##### 6.1 La diferencia de velocidades controla la curvatura
+### 4. Interpretación y Análisis
+##### 4.1 La diferencia de velocidades controla la curvatura
 El resultado más importante del laboratorio es que el comportamiento del robot diferencial está completamente gobernado por dos cantidades independientes: la suma de velocidades controla la rapidez de traslación, y la diferencia controla la curvatura. Matemáticamente:
 
 `v ∝ (vr + vl)   →   a mayor suma, mayor velocidad lineal`  
@@ -206,13 +164,13 @@ El resultado más importante del laboratorio es que el comportamiento del robot 
 `κ = 1/R ∝ (vr - vl)   →   a mayor diferencia, mayor curvatura`  
 
 Esta separación casi ortogonal entre traslación y rotación hace que el modelo diferencial sea especialmente sencillo de programar. En el DESAFIO 2 bastó cambiar un 10% en una rueda para generar un giro continuo. En el DESAFIO 3, una diferencia de 3.0 rad/s produjo un círculo muy cerrado. En el DESAFIO 4, la alternancia entre diferencia cero (avance) y diferencia máxima con signos opuestos (giro puro) construyó el cuadrado.
-##### 6.2 No-holonomía y sus implicaciones
+##### 4.2 No-holonomía y sus implicaciones
 El robot diferencial es un sistema no holónomo: no puede desplazarse lateralmente. Solo puede moverse en la dirección en que apunta. Esta restricción implica que el estado (x, y, θ) evoluciona de forma acoplada: cambiar θ requiere consumir tiempo y espacio. En el DESAFIO 4 esto es especialmente evidente: para dibujar cada esquina del cuadrado el robot debe detenerse (v = 0) y girar en el lugar antes de continuar. No puede simplemente cambiar de dirección.
-##### 6.3 Control por temporización vs. control por sensores
+##### 4.3 Control por temporización vs. control por sensores
 Los desafíos 1 a 3 son ejemplos de control en lazo abierto: el robot ejecuta velocidades fijas sin retroalimentación. El desafío 4 agrega una capa de lógica temporal (duration_side, duration_turn) para construir una trayectoria compuesta. En condiciones de simulación ideal (sin fricción variable, sin ruido) este enfoque funciona correctamente.
 Sin embargo, en un robot físico, el control por temporización acumula error: pequeñas variaciones en la fricción, el voltaje de las baterías o la superficie hacen que duration_side y duration_turn sean inexactos, produciendo un cuadrado cada vez más distorsionado. El factor 1.04 del código es precisamente una corrección empírica de este tipo de error sistemático. En robótica real se usan encoders (odometría) o sensores externos para cerrar el lazo y corregir la trayectoria.
 
-### 7. Preguntas de Análisis
+### 5. Preguntas de Análisis
 ##### Pregunta 1: ¿Qué ocurre cuando ambas ruedas tienen la misma velocidad?
 Cuando vr = vl, la diferencia (vr − vl) = 0, por lo tanto:
 
