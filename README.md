@@ -1,18 +1,3 @@
-## 4) Experimentos
-
-En esta sección se detalla el comportamiento del robot **e-puck** mediante la implementación de diferentes lógicas de control cinemático en Python. El controlador permite ejecutar diversas trayectorias según el valor de la variable `DESAFIO`:
-
-* **Línea Recta (Desafío 1):** Movimiento uniforme donde $v_l = v_r$, permitiendo un desplazamiento frontal constante.
-* **Giro Constante (Desafíos 2 y 3):** Se aplican velocidades diferenciales fijas para generar trayectorias circulares.
-* **Trayectoria Cuadrada (Desafío 4):** Se utiliza un control basado en tiempo (`robot.getTime()`) para alternar entre avanzar en línea recta y girar 90° sobre su propio eje.
-* **Trayectoria en "S" (Desafío 5):** El robot alterna radios de giro cada 5 segundos para simular una curva sinuosa.
-
-> **Demostración en Video:**
-> A continuación se presenta el video que muestra el funcionamiento del robot en el simulador Webots:
-> ![Video del funcionamiento](URL_DE_TU_VIDEO_O_GIF_AQUI)
-
----
-
 ## 5) Análisis de Preguntas
 
 ### 1. Introducción y Objetivo
@@ -186,9 +171,10 @@ cycle_time      = 3.88 + 0.66 = 4.54 s por lado
 Análisis de las dos fases:
 El cuadrado se construye alternando dos fases en cada iteración del ciclo principal:
 
-Fase	vl (rad/s)	vr (rad/s)	ω (rad/s)	Efecto
-Avance  (3.88 s)	3.14	3.14	0.0	Recorre 0.25 m en línea recta
-Giro  (0.66 s)	−3.14	+3.14	≈ 2.48	Gira 90° sobre su propio eje
+| Fase | vl (rad/s) | vr (rad/s) | ω (rad/s) | Efecto |
+| ------------ | ------------ | ------------ | ------------ | ------------ |
+| Avance | (3.88 s) | 3.14 | 0.0 | Recorre 0.25 m en línea recta |
+| Giro  (0.66 s) | −3.14 | +3.14 | Gira 90° sobre su propio eje |
 
 Resultados observados:
 El robot ejecutó correctamente los cuatro lados del cuadrado. Durante la fase de avance (vl = vr = 3.14), el robot se desplazó en línea recta aproximadamente 0.25 m. Durante la fase de giro (vl = −3.14, vr = 3.14), el robot realizó una rotación pura de 90° sobre su eje, sin trasladarse.
@@ -197,9 +183,9 @@ El factor de corrección empírico 1.04 aplicado a duration_turn fue determinant
 
 Este experimento demuestra que trayectorias complejas pueden programarse sin sensores de posición mediante control por temporización, aunque la precisión depende de que no existan perturbaciones que desestabilicen el timing.
 
-Conclusión DESAFIO 4: el cuadrado se logra alternando dos estados: vl=vr (recto) y vl=-vr (giro puro).
-Duración lado: 3.88 s · Duración giro: 0.66 s · Ciclo total: 4.54 s
-El factor 1.04 compensa la inercia del robot y evita acumulación de error angular.
+>Conclusión DESAFIO 4: el cuadrado se logra alternando dos estados: vl=vr (recto) y vl=-vr (giro puro).
+>Duración lado: 3.88 s · Duración giro: 0.66 s · Ciclo total: 4.54 s
+>El factor 1.04 compensa la inercia del robot y evita acumulación de error angular.
 
 ### 5. Tabla Resumen de Experimentos
 La siguiente tabla sintetiza los resultados cuantitativos de los cuatro desafíos ejecutados, con los valores calculados a partir de los parámetros reales del robot e-puck.
