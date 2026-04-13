@@ -1,4 +1,4 @@
-## 6) Análisis de Preguntas
+## 6) Análisis
 
 ### 1. Código del Controlador en Webots
 El siguiente código Python fue el efectivamente utilizado durante el laboratorio. Implementa los cuatro desafíos en un único controlador seleccionable mediante la variable DESAFIO. Se presentan los fragmentos relevantes para cada experimento analizado.
