@@ -99,8 +99,8 @@ Resultados observados:
 Al aplicar la misma velocidad a ambas ruedas (vl = vr = 3.14 rad/s), la velocidad angular ω resulta exactamente cero. El robot avanzó en línea recta sin ninguna desviación, manteniendo su orientación θ constante durante toda la simulación. La velocidad de traslación resultante fue de aproximadamente 0.0644 m/s en la dirección de la orientación inicial.
 Este experimento valida la condición fundamental del modelo diferencial: cuando ambas ruedas giran a la misma velocidad, el punto de contacto de cada rueda con el suelo avanza la misma distancia en el mismo tiempo, impidiendo cualquier giro.
 
-Conclusión DESAFIO 1: vr = vl  →  ω = 0  →  θ = constante  →  trayectoria rectilínea.
-La rapidez de avance depende de la magnitud de la velocidad; la dirección no cambia.
+>Conclusión DESAFIO 1: vr = vl  →  ω = 0  →  θ = constante  →  trayectoria rectilínea.
+>La rapidez de avance depende de la magnitud de la velocidad; la dirección no cambia.
 
 ##### 4.2 DESAFIO 2 — Trayectoria curva (vr ≠ vl)
 Código ejecutado:
@@ -121,9 +121,9 @@ Resultados observados:
 Al reducir la velocidad de la rueda izquierda en un 10% respecto a la base (vl = 0.90 × base_speed), se generó una diferencia vr − vl = 0.314 rad/s que produjo una velocidad angular ω ≈ 0.124 rad/s. El robot describió un arco continuo hacia la izquierda con radio de curvatura R ≈ 0.494 m.
 La rueda derecha (más rápida) quedó en el exterior del arco y la izquierda (más lenta) en el interior. La trayectoria fue un arco suave: pequeñas diferencias de velocidad producen grandes radios de curvatura. La orientación θ varió de manera continua y uniforme durante todo el recorrido.
 
-Conclusión DESAFIO 2: una diferencia del 10% en velocidades genera un giro continuo con R ≈ 0.49 m.
-Regla: mayor diferencia |vr − vl| → menor radio R → giro más cerrado.
-La rueda más lenta siempre queda en el interior del arco.
+>Conclusión DESAFIO 2: una diferencia del 10% en velocidades genera un giro continuo con R ≈ 0.49 m.
+>Regla: mayor diferencia |vr − vl| → menor radio R → giro más cerrado.
+>La rueda más lenta siempre queda en el interior del arco.
 
 ##### 4.3 DESAFIO 3 — Círculo (vl = 2.0, vr = 5.0)
 Código ejecutado:
@@ -142,9 +142,9 @@ Resultados observados:
 Con vl = 2.0 y vr = 5.0, la diferencia de velocidades (vr − vl = 3.0 rad/s) es sustancialmente mayor que en el DESAFIO 2, lo que produce un radio de curvatura muy pequeño (R ≈ 0.06 m). El robot describió un círculo cerrado de radio pequeño de forma continua y repetitiva. La trayectoria fue estable durante toda la simulación sin derivar.
 Este experimento ilustra que un círculo perfecto se obtiene cuando la relación vr/vl = constante ≠ 1 se mantiene durante todo el tiempo. Con velocidades constantes en ambas ruedas, ω y v son constantes, por lo que el radio de curvatura es fijo y el robot traza el mismo círculo indefinidamente.
 
-Conclusión DESAFIO 3: vl = 2.0, vr = 5.0  →  R ≈ 0.061 m  →  círculo pequeño continuo.
-Para un círculo se requiere: vr ≠ vl, ambas del mismo signo, y ambas constantes en el tiempo.
-Cuanto mayor la diferencia vr − vl, más pequeño el círculo.
+>Conclusión DESAFIO 3: vl = 2.0, vr = 5.0  →  R ≈ 0.061 m  →  círculo pequeño continuo.
+>Para un círculo se requiere: vr ≠ vl, ambas del mismo signo, y ambas constantes en el tiempo.
+>Cuanto mayor la diferencia vr − vl, más pequeño el círculo.
 
 ##### 4.4 DESAFIO 4 — Cuadrado (control por temporización)
 Código ejecutado:
@@ -225,8 +225,8 @@ Cuando vr = vl, la diferencia (vr − vl) = 0, por lo tanto:
 La velocidad angular es exactamente cero, lo que significa que la orientación θ no cambia. El robot avanza en línea recta en la dirección de su orientación actual con velocidad lineal igual a la velocidad individual de cada rueda. Geométricamente esto corresponde a un radio de curvatura infinito, es decir, una recta.
 En el DESAFIO 1 esto fue confirmado experimentalmente: con vl = vr = 3.14, el robot avanzó en perfecta línea recta sin ninguna deriva angular durante toda la duración de la simulación.
 
-Respuesta: vr = vl  →  ω = 0  →  el robot avanza en línea recta.
-La velocidad de traslación es v = vr = vl. La orientación no varía.
+>Respuesta: vr = vl  →  ω = 0  →  el robot avanza en línea recta.
+>La velocidad de traslación es v = vr = vl. La orientación no varía.
 
 ##### Pregunta 2: ¿Cómo cambia la trayectoria cuando las velocidades son diferentes?
 Cuando vr ≠ vl (ambas del mismo signo), la diferencia genera una velocidad angular ω ≠ 0 y el robot describe un arco circular de radio finito. La relación es:
@@ -238,9 +238,9 @@ Cuando vr ≠ vl (ambas del mismo signo), la diferencia genera una velocidad ang
 La dirección del giro depende del signo de (vr − vl): si vr > vl, el robot gira hacia la izquierda (la rueda más lenta queda en el interior del arco). Si vl > vr, gira a la derecha. El radio R es inversamente proporcional a la diferencia: mayor diferencia → menor radio → giro más cerrado.
 En el DESAFIO 2 se demostró con una diferencia del 10%: vl = 2.826, vr = 3.14 produjo ω ≈ 0.124 rad/s y un arco con R ≈ 0.494 m. En el DESAFIO 3, una diferencia de 3.0 rad/s produjo ω ≈ 1.18 rad/s y un círculo con R ≈ 0.061 m, mucho más cerrado.
 
-Respuesta: vr ≠ vl  →  ω ≠ 0  →  arco circular de radio R = L(vr+vl)/(2(vr-vl)).
-Mayor diferencia |vr−vl| → menor R → curva más cerrada.
-La rueda más lenta queda siempre en el interior del arco.
+>Respuesta: vr ≠ vl  →  ω ≠ 0  →  arco circular de radio R = L(vr+vl)/(2(vr-vl)).
+>Mayor diferencia |vr−vl| → menor R → curva más cerrada.
+>La rueda más lenta queda siempre en el interior del arco.
 
 ##### Pregunta 3: ¿Qué ocurre cuando una rueda gira en sentido opuesto a la otra?
 Cuando vr = −vl (velocidades de igual magnitud y signos opuestos):
@@ -255,9 +255,9 @@ La velocidad lineal del centro del robot es exactamente cero: el robot no se des
 
 En el DESAFIO 4 esta rotación pura se aplica en cada esquina del cuadrado: con vl = −3.14 y vr = 3.14, el robot gira en el lugar a ω = 2 × 0.0205 x 3.14 / 0.052 ≈ 2.48 rad/s, ejecutando exactamente 90° en cada giro gracias al control por temporización con el factor corrector 1.04.
 
-Respuesta: vr = −vl  →  v = 0, ω = 2·r·vr/L  →  rotación pura sobre el eje del robot.
-El robot no avanza. Gira sobre el punto medio entre sus ruedas.
-En el DESAFIO 4 se usa esta rotación para las esquinas del cuadrado.
+>Respuesta: vr = −vl  →  v = 0, ω = 2·r·vr/L  →  rotación pura sobre el eje del robot.
+>El robot no avanza. Gira sobre el punto medio entre sus ruedas.
+>En el DESAFIO 4 se usa esta rotación para las esquinas del cuadrado.
 
 ##### Pregunta 4: ¿Qué tipo de movimiento permite dibujar un círculo?
 Para dibujar un círculo se requiere que el robot mantenga una relación de velocidades constante vr/vl = constante, con vr ≠ vl y ambas del mismo signo positivo. Esto garantiza que ω y v sean constantes en el tiempo, produciendo un radio de curvatura fijo R.
@@ -284,9 +284,9 @@ En el DESAFIO 3 se verificó esto con vl = 2.0 y vr = 5.0:
 
 El resultado experimental confirmó un círculo cerrado y repetitivo, con la rueda derecha (vr = 5.0) en el exterior del arco y la izquierda (vl = 2.0) en el interior.
 
-Respuesta: para un círculo se necesita vr ≠ vl, constantes, mismo signo.
-En DESAFIO 3: vl=2.0, vr=5.0 → R ≈ 0.061 m, T ≈ 5.32 s por vuelta.
-A diferencia de la rotación pura (R=0), en el círculo el robot también se traslada (v ≠ 0).
+>Respuesta: para un círculo se necesita vr ≠ vl, constantes, mismo signo.
+>En DESAFIO 3: vl=2.0, vr=5.0 → R ≈ 0.061 m, T ≈ 5.32 s por vuelta.
+>A diferencia de la rotación pura (R=0), en el círculo el robot también se traslada (v ≠ 0).
 
 ### 8. Conclusiones
 Los cuatro desafíos ejecutados en Webots permitieron verificar experimentalmente los tres comportamientos fundamentales del modelo cinemático diferencial y construir una trayectoria compuesta (cuadrado) mediante control por temporización. Las conclusiones principales son:
