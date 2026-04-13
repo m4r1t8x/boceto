@@ -1,4 +1,4 @@
-## 5) Análisis de Preguntas
+## 6) Análisis de Preguntas
 
 ### 1. Código del Controlador en Webots
 El siguiente código Python fue el efectivamente utilizado durante el laboratorio. Implementa los cuatro desafíos en un único controlador seleccionable mediante la variable DESAFIO. Se presentan los fragmentos relevantes para cada experimento analizado.
@@ -246,7 +246,7 @@ El resultado experimental confirmó un círculo cerrado y repetitivo, con la rue
 >En DESAFIO 3: vl=2.0, vr=5.0 → R ≈ 0.061 m, T ≈ 5.32 s por vuelta.
 >A diferencia de la rotación pura (R=0), en el círculo el robot también se traslada (v ≠ 0).
 
-## 6) Conclusiones
+## 7) Conclusiones
 Los cuatro desafíos ejecutados en Webots permitieron verificar experimentalmente los tres comportamientos fundamentales del modelo cinemático diferencial y construir una trayectoria compuesta (cuadrado) mediante control por temporización. Las conclusiones principales son:
 
 * El modelo cinemático diferencial es simple y poderoso: dos velocidades escalares determinan completamente el movimiento plano del robot. La suma controla la rapidez y la diferencia controla la curvatura.
