@@ -288,7 +288,7 @@ El resultado experimental confirmó un círculo cerrado y repetitivo, con la rue
 >En DESAFIO 3: vl=2.0, vr=5.0 → R ≈ 0.061 m, T ≈ 5.32 s por vuelta.
 >A diferencia de la rotación pura (R=0), en el círculo el robot también se traslada (v ≠ 0).
 
-### 8. Conclusiones
+## 6) Conclusiones
 Los cuatro desafíos ejecutados en Webots permitieron verificar experimentalmente los tres comportamientos fundamentales del modelo cinemático diferencial y construir una trayectoria compuesta (cuadrado) mediante control por temporización. Las conclusiones principales son:
 
 * El modelo cinemático diferencial es simple y poderoso: dos velocidades escalares determinan completamente el movimiento plano del robot. La suma controla la rapidez y la diferencia controla la curvatura.
@@ -298,13 +298,6 @@ Los cuatro desafíos ejecutados en Webots permitieron verificar experimentalment
 * DESAFIO 4 (cuadrado): demostró que trayectorias complejas pueden construirse combinando estados simples. La rotación pura (vl = −vr) permite girar 90° en el lugar sin trasladarse. El factor de corrección empírico 1.04 fue esencial para la precisión de los giros.
 * El control por temporización (lazo abierto) funciona en simulación, pero en robots físicos acumula error. Para aplicaciones reales se requieren encoders o sensores externos que permitan cerrar el lazo de control.
 * La plataforma Webots con el robot e-puck es apropiada para estudiar cinemática diferencial: los parámetros físicos del modelo son exactos y reproducibles, eliminando el ruido sensorial presente en los robots reales.
-
-
-## 6) Conclusión
-
-Este laboratorio nos enseñó a trabajar los principios de la **cinemática de robots diferenciales** en un entorno controlado. Lo cual se logró:
-
-* Implementar una máquina de estados simple basada en el tiempo para generar trayectorias geométricas.
 * Comprender la relación entre la velocidad angular de los motores y el desplazamiento lineal del robot en el plano.
 * Aprender a configurar entornos de simulación (arena, luces y sensores) para pruebas de robótica autónoma.
 
